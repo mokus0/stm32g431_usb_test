@@ -14,17 +14,17 @@ LD_SCRIPT = src/stm32g431kbtx_flash.ld
 DEFS = -DSTM32G431xx -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER
 SOURCES = \
 	src \
-	ext/cmsis_device_g4/Source/Templates/gcc/startup_stm32g431xx.s \
-	ext/stm32g4xx_hal_driver/Src/stm32g4xx_hal.c \
-	ext/cmsis_device_g4/Source/Templates/system_stm32g4xx.c \
-	ext/stm32g4xx_hal_driver/Src/stm32g4xx_ll_utils.c \
-	ext/stm32g4xx_hal_driver/Src/stm32g4xx_hal_cortex.c \
-	ext/stm32g4xx_hal_driver/Src/stm32g4xx_ll_gpio.c
+	ext/STM32CubeG4/Drivers/CMSIS/Device/ST/STM32G4xx/Source/Templates/gcc/startup_stm32g431xx.s \
+	ext/STM32CubeG4/Drivers/CMSIS/Device/ST/STM32G4xx/Source/Templates/system_stm32g4xx.c \
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c \
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c \
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_gpio.c \
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_utils.c
 INC_DIRS = \
 	include \
-	ext/cmsis_device_g4/Include \
-	ext/stm32g4xx_hal_driver/Inc \
-	ext/cmsis_core/Core/Include
+	ext/STM32CubeG4/Drivers/CMSIS/Core/Include \
+	ext/STM32CubeG4/Drivers/CMSIS/Device/ST/STM32G4xx/Include \
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Inc
 
 # try to keep the rest of this more-or-less project independent:
 
