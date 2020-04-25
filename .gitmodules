@@ -1,0 +1,9 @@
+[submodule "ext/cmsis_device_g4"]
+	path = ext/cmsis_device_g4
+	url = https://github.com/STMicroelectronics/cmsis_device_g4
+[submodule "ext/stm32g4xx_hal_driver"]
+	path = ext/stm32g4xx_hal_driver
+	url = https://github.com/STMicroelectronics/stm32g4xx_hal_driver
+[submodule "ext/cmsis_core"]
+	path = ext/cmsis_core
+	url = https://github.com/STMicroelectronics/cmsis_core
