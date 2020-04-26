@@ -49,3 +49,14 @@ void usb_clk_init(void) {
   while (!LL_RCC_HSI48_IsReady());
   LL_RCC_SetUSBClockSource(LL_RCC_USB_CLKSOURCE_HSI48);
 }
+
+void usb_bus_suspend(void) {
+  SCB->SCR |= (uint32_t)((uint32_t)(SCB_SCR_SLEEPDEEP_Msk | SCB_SCR_SLEEPONEXIT_Msk));
+}
+
+void usb_bus_resume(void) {
+  SCB->SCR &= (uint32_t)~((uint32_t)(SCB_SCR_SLEEPDEEP_Msk | SCB_SCR_SLEEPONEXIT_Msk));
+
+  system_clock_init();
+  usb_clk_init();
+}

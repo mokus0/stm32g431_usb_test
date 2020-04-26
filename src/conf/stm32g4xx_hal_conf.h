@@ -5,7 +5,6 @@
 #define HAL_MODULE_ENABLED 1
 #define HAL_CORTEX_MODULE_ENABLED 1
 #define HAL_PCD_MODULE_ENABLED 1
-#define USE_HAL_PCD_REGISTER_CALLBACKS 1
 
 #include "stm32_assert.h"
 
