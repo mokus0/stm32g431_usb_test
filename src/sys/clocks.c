@@ -1,4 +1,4 @@
-#include "system_clock.h"
+#include "sys/clocks.h"
 
 #include <assert.h>
 #include <stm32g4xx_hal.h>
@@ -41,4 +41,11 @@ void system_clock_init(void) {
 
   // [Re-]Initialize HAL systick
   assert(HAL_InitTick(TICK_INT_PRIORITY) == HAL_OK);
+}
+
+// set up USB clocked from HSI48
+void usb_clk_init(void) {
+  LL_RCC_HSI48_Enable();
+  while (!LL_RCC_HSI48_IsReady());
+  LL_RCC_SetUSBClockSource(LL_RCC_USB_CLKSOURCE_HSI48);
 }

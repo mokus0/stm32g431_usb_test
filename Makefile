@@ -1,5 +1,9 @@
 MAIN_TARGET = usb.elf
-WARNINGS = -Werror=all -Werror=extra -Wfatal-errors
+WARNINGS = \
+	-Werror=all \
+	-Werror=extra \
+	-Wfatal-errors \
+	-Wno-unused-parameter # thanks, ST...
 
 GCC_PREFIX = arm-none-eabi-
 CPU = -mcpu=cortex-m4
@@ -10,7 +14,7 @@ DEBUG = 1
 OPT = -Og
 
 LIBS = -lc -lm -lnosys
-LD_SCRIPT = src/stm32g431kbtx_flash.ld
+LD_SCRIPT = src/sys/stm32g431kbtx_flash.ld
 DEFS = -DSTM32G431xx -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER
 SOURCES = \
 	src \
@@ -19,12 +23,21 @@ SOURCES = \
 	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c \
 	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c \
 	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_gpio.c \
-	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_utils.c
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_utils.c \
+	ext/STM32CubeG4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
+	ext/STM32CubeG4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
+	ext/STM32CubeG4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c \
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pcd.c \
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c \
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pcd_ex.c
 INC_DIRS = \
-	include \
+	src \
+	src/conf \
 	ext/STM32CubeG4/Drivers/CMSIS/Core/Include \
 	ext/STM32CubeG4/Drivers/CMSIS/Device/ST/STM32G4xx/Include \
-	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Inc
+	ext/STM32CubeG4/Drivers/STM32G4xx_HAL_Driver/Inc \
+	ext/STM32CubeG4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc \
+	ext/STM32CubeG4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
 
 # try to keep the rest of this more-or-less project independent:
 
